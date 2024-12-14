@@ -18,10 +18,27 @@ public class NumberExpressionFactory {
      * @return An array of number expressions representing the result of the
      *         multiplication table of the given numbers.
      */
-//    @StudentImplementationRequired
-//    public static NumberExpression[] multiplicationTable(NumberExpression[] numbers) {
-//        return crash(); // TODO: H2.1 - remove if implemented
-//    }
+    @StudentImplementationRequired
+    public static NumberExpression[] multiplicationTable(NumberExpression[] numbers) {
+
+        NumberExpression[] result = new NumberExpression[numbers.length * numbers.length];
+
+        ArithmeticExpression multiply = (left, right) -> {
+            return () -> left.evaluate() * right.evaluate();
+        };
+
+        int index = 0;
+
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = 0; j < numbers.length; j++) {
+                result[index++] = multiply.evaluate(numbers[i], numbers[j]);
+            }
+        }
+
+
+        return result;
+
+    }
 
 
     // TODO: H1.2 - uncomment for testing
@@ -33,20 +50,20 @@ public class NumberExpressionFactory {
      * @return An array of number expressions representing the result of the
      *         multiplication table of the numbers from lowerBound to upperBound.
      */
-//    @DoNotTouch
-//    public static NumberExpression[] multiplicationTable(int lowerBound, int upperBound) {
-//        int numberOfNumbers = upperBound - lowerBound + 1;
-//        NumberExpression[] baseNumbers = new NumberExpression[numberOfNumbers];
-//
-//        for (int i = lowerBound; i <= upperBound; i++) {
-//            // Copy to local variable to make it effectively final, so it can be used in
-//            // lambda
-//            int finalI = i;
-//            baseNumbers[i - lowerBound] = () -> finalI;
-//        }
-//
-//        return multiplicationTable(baseNumbers);
-//    }
+    @DoNotTouch
+    public static NumberExpression[] multiplicationTable(int lowerBound, int upperBound) {
+        int numberOfNumbers = upperBound - lowerBound + 1;
+        NumberExpression[] baseNumbers = new NumberExpression[numberOfNumbers];
+
+        for (int i = lowerBound; i <= upperBound; i++) {
+            // Copy to local variable to make it effectively final, so it can be used in
+            // lambda
+            int finalI = i;
+            baseNumbers[i - lowerBound] = () -> finalI;
+        }
+
+        return multiplicationTable(baseNumbers);
+    }
 
     /**
      * Filters the given array of number expressions based on the given predicate.

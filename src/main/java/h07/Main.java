@@ -38,16 +38,16 @@ public class Main {
     @DoNotTouch
     private static void numberExpressionMultiplicationTableTests() {
         // TODO: H2.2 - uncomment to test
-//        int lowerBound = 1;
-//        int upperBound = 10;
-//        NumberExpression[] multiplicationTable = NumberExpressionFactory.multiplicationTable(lowerBound, upperBound);
-//
-//        for (int i = lowerBound; i <= upperBound; i++) {
-//            for (int j = lowerBound; j <= upperBound; j++) {
-//                System.out.printf("| %4s ", multiplicationTable[(i - lowerBound) * (upperBound - lowerBound + 1) + (j - lowerBound)].evaluate());
-//            }
-//            System.out.println("|");
-//        }
+        int lowerBound = 1;
+        int upperBound = 10;
+        NumberExpression[] multiplicationTable = NumberExpressionFactory.multiplicationTable(lowerBound, upperBound);
+
+        for (int i = lowerBound; i <= upperBound; i++) {
+            for (int j = lowerBound; j <= upperBound; j++) {
+                System.out.printf("| %4s ", multiplicationTable[(i - lowerBound) * (upperBound - lowerBound + 1) + (j - lowerBound)].evaluate());
+            }
+            System.out.println("|");
+        }
     }
 
     private static final NaturalNumber THREE = new Successor(new Successor(new Successor(new Zero())));
