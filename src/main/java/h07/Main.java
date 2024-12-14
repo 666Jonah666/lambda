@@ -22,10 +22,10 @@ public class Main {
         numberExpressionMultiplicationTableTests();
 
         testHeader("Peano Number Expressions");
-        peanoNumberExpressionTests();
+//        peanoNumberExpressionTests();
 
         testHeader("Filter, Fold, Map");
-        filterFoldMapTests();
+//        filterFoldMapTests();
     }
 
     @DoNotTouch
@@ -53,13 +53,13 @@ public class Main {
     private static final NaturalNumber THREE = new Successor(new Successor(new Successor(new Zero())));
     private static final NaturalNumber SEVEN = new Successor(new Successor(new Successor(new Successor(new Successor(new Successor(new Successor(new Zero())))))));
 
-    @StudentImplementationRequired
+    /*@StudentImplementationRequired
     private static void peanoNumberExpressionTests() {
         crash(); // TODO: H3.3 - remove if implemented
     }
-
-    @StudentImplementationRequired
+*/
+    /*@StudentImplementationRequired
     private static void filterFoldMapTests() {
         crash(); // TODO: H4.5 - remove if implemented
-    }
+    }*/
 }

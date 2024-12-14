@@ -38,6 +38,25 @@ public class NumberExpressionFactory {
 
         return result;
 
+        /*
+        public static NumberExpression[] multiplicationTable(NumberExpression[] numbers) {
+        int size = numbers.length;
+        NumberExpression[] result = new NumberExpression[size * size];
+
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                int index = i * size + j;
+                result[index] = () -> {
+                    ArithmeticExpression multiplication = (a, b) -> () -> a.evaluate() * b.evaluate();
+                    return multiplication.evaluate(numbers[i], numbers[j]).evaluate();
+                };
+            }
+        }
+
+        return result;
+    }
+         */
+
     }
 
 
@@ -75,8 +94,24 @@ public class NumberExpressionFactory {
      * @param predicate the predicate to filter the number expressions
      * @return An array of number expressions that satisfy the predicate.
      */
-//    @StudentImplementationRequired
-//    public static NumberExpression[] filter(NumberExpression[] numbers, IntPredicate predicate) {
-//        return crash(); // TODO: H4.3 - remove if implemented
-//    }
+    @StudentImplementationRequired
+    public static NumberExpression[] filter(NumberExpression[] numbers, IntPredicate predicate) {
+        int count = 0;
+        for (int i = 0; i < numbers.length; i++) {
+            if (predicate.test(numbers[i].evaluate())) {
+                count++;
+            }
+        }
+
+        NumberExpression[] result = new NumberExpression[count];
+
+        int index = 0;
+        for (NumberExpression number : numbers) {
+            if (predicate.test(number.evaluate())) {
+                result[index++] = number;
+            }
+        }
+
+        return result;
+    }
 }

@@ -1,6 +1,9 @@
 package h07.Peano;
 
 
+import h07.ConvertNumberToPeanoExpression;
+import h07.ConvertNumberToPeanoExpressionImpl;
+import h07.NumberExpression;
 import org.tudalgo.algoutils.student.annotation.StudentImplementationRequired;
 
 import static org.tudalgo.algoutils.student.Student.crash;
@@ -15,10 +18,18 @@ public class PeanoNumberExpressionFactory {
      * @param numberExpressions the number expressions to convert
      * @return the converted Peano number expressions
      */
-//    @StudentImplementationRequired
-//    public static PeanoNumberExpression[] fromNumberExpressions(NumberExpression[] numberExpressions) {
-//        return crash(); // TODO: H4.2 - remove if implemented
-//    }
+    @StudentImplementationRequired
+    public static PeanoNumberExpression[] fromNumberExpressions(NumberExpression[] numberExpressions) {
+
+        PeanoNumberExpression[] result = new PeanoNumberExpression[numberExpressions.length];
+        ConvertNumberToPeanoExpressionImpl converter = new ConvertNumberToPeanoExpressionImpl();
+
+        for (int i = 0; i < numberExpressions.length; i++) {
+            result[i] = converter.convert(numberExpressions[i]);
+        }
+
+        return result;
+    }
 
     /**
      * Folds an array of Peano number expressions into a single Peano number expression.
@@ -28,8 +39,15 @@ public class PeanoNumberExpressionFactory {
      * @param operation the operation to apply
      * @return the folded Peano number expression
      */
-//    @StudentImplementationRequired
-//    public static PeanoNumberExpression fold(PeanoNumberExpression[] peanoNumberExpressions, PeanoNumberExpression initial, PeanoArithmeticExpression operation) {
-//        return crash(); // TODO: H4.4 - remove if implemented
-//    }
+    @StudentImplementationRequired
+    public static PeanoNumberExpression fold(PeanoNumberExpression[] peanoNumberExpressions, PeanoNumberExpression initial, PeanoArithmeticExpression operation) {
+
+        PeanoNumberExpression result = initial;
+
+        for (PeanoNumberExpression peanoNumberExpression : peanoNumberExpressions) {
+            result = operation.evaluate(result, peanoNumberExpression);
+        }
+
+        return result;
+    }
 }
